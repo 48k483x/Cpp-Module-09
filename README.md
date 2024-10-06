@@ -25,4 +25,4 @@ cpp09/
 
 * STL containers (e.g., vector, list, map)
 * STL algorithms
-* <STL>
+* STL
