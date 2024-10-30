@@ -45,4 +45,7 @@ class BitcoinExchange{
 
   /* Print Data */
   float getExchangeRate(std::string const & date);
+
+  /* Get Closest Date */
+  std::string getClosestDate(std::string const & date);
 };

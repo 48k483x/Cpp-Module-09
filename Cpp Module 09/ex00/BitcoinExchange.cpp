@@ -119,9 +119,11 @@ void BitcoinExchange::processInputFile(std::string const & filename) {
   }
   std::pair<std::string, float> data;
   while (std::getline(file, line)) {
+    if (line.empty()) continue;
     if (parseData('|', line, data)) {
       input[data.first] = data.second;
-      std::cout << "Key: " << data.first << " Value: " << data.second << std::endl;
+      std::cout << input.rbegin()->first << " => " << input.rbegin()->second;
+      std::cout << " = " << getExchangeRate(input.rbegin()->first) * input.rbegin()->second << std::endl;
     }
     else {
       std::cerr << "Error: invalid data." << std::endl;
@@ -132,4 +134,19 @@ void BitcoinExchange::processInputFile(std::string const & filename) {
 /* Find Correct Date */
 float  BitcoinExchange::getExchangeRate(std::string const & date) {
   std::map<std::string, float>::iterator it = dataBase.find(date);
-  
+
+  if (it == dataBase.end()) {
+    std::string closest = getClosestDate(date);
+    return dataBase[closest];
+  }
+  return it->second;
+}
+
+/* Get Closest Date */
+std::string BitcoinExchange::getClosestDate(std::string const & date) {
+  std::map<std::string,float>::iterator it = dataBase.upper_bound(date);
+
+  if (it == dataBase.begin()) return it->first;
+  --it;
+  return it->first;
+}
