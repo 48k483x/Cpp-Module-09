@@ -65,13 +65,25 @@ bool BitcoinExchange::parseData(char split, std::string const& line, std::pair<s
   float value = 0;
 
   if (std::getline(ss, date, split)) {
-    if (!isValideDate(date)) return false;
+    if (!isValideDate(date)) {
+      std::cerr << "Error: bad input => ";
+      std::cerr << date << std::endl;
+      return false;
+    }
     std::getline(ss, valueStr); // Read the entire remaining part of the line into valueStr
     strtrim(valueStr);
-    if (valueStr.find(' ') != std::string::npos) return false;
+    if (valueStr.find(' ') != std::string::npos) {
+      std::cerr << "Error: bad input => ";
+      std::cerr << date << std::endl;
+      return false;
+    }
     value = std::strtof(valueStr.c_str(), &endPtr);
     if (*endPtr != '\0') return false;
-    if (split == '|' && (value < 0 || value > 1000)) return false;
+    if (split == '|' && (value < 0 || value > 1000)) {
+      if (value < 0) std::cerr << "Error: not a positive number." << std::endl;
+      else  std::cerr << "Error: too large a number." << std::endl;
+      return false;
+    }
     if (ss.fail()) return false;
     data = std::make_pair(date, value);
   }
@@ -125,9 +137,7 @@ void BitcoinExchange::processInputFile(std::string const & filename) {
       std::cout << input.rbegin()->first << " => " << input.rbegin()->second;
       std::cout << " = " << getExchangeRate(input.rbegin()->first) * input.rbegin()->second << std::endl;
     }
-    else {
-      std::cerr << "Error: invalid data." << std::endl;
-    }
+    else continue;
   }
 }
 
