@@ -1,7 +1,7 @@
 # include "RPN.hpp"
 
 /* Constructors */
-RPN::RPN() : _error(false), _upgradedResult(0) {}
+RPN::RPN() : _upgradedResult(0) {}
 
 RPN::RPN(RPN const & src) { *this = src; }
 
