@@ -29,11 +29,16 @@ class PmergeMe
         ~PmergeMe();
 
         //Helper methods
+        // 1
         void parse(int argNumber, char **arguments);
         int validNumber(std::string str);
+
+        // l5er dial 2
         int jacobLadderSequence(int n);
 
         //Vector methods
+
+        // 2
         std::vector<int> sortedVector();
         void recursiveSortingVector(std::vector<std::pair<int, int> > &couple);
         void mergeSortVector(std::vector<std::pair<int, int> > &couple, int left, int right);
@@ -41,6 +46,7 @@ class PmergeMe
         std::vector<unsigned long> jacobLadderIndex(std::vector<int> &jacobSea, int size);
 
         //Deque methods
+        // L5er
         std::deque<int> sortedDeque();
         void recursiveSortingDeque(std::deque<std::pair<int, int> > &couple);
         void mergeSortDeque(std::deque<std::pair<int, int> > &couple, int left, int right);
