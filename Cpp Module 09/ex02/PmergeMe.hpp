@@ -3,8 +3,8 @@
 # include <iostream>
 # include <sstream>
 # include <string>
-# include <deque>
 # include <vector>
+# include <list>
 
 /*
 *  1. Group elements into pairs
@@ -25,10 +25,12 @@
 
 class PmergeMe {
   private:
-    // Implement the class
+    std::vector<int> _vec;
+    std::list<int> _list;
   public:
     /* Constructors */
     PmergeMe();
+    PmergeMe(int ac, char *av[]);
     PmergeMe(PmergeMe const & src);
     ~PmergeMe();
 
@@ -36,4 +38,18 @@ class PmergeMe {
     PmergeMe & operator=(PmergeMe const & src);
 
     /* Public Methods */
+    void mergeInsertSortVec(std::vector<int> & vec);
+    void mergeInsertSortList(std::list<int> & list);
+
+    protected:
+      bool OnlyDigits(std::string const & str);
+      int jacobsthal(int n);
+      size_t getPairIndexVec(std::vector<std::pair<int, int> > vec, size_t index);
+      std::vector<std::pair<int, int> > getPairsVec(std::vector<int>& vec);
+      std::vector<std::pair<int, int> > mergeSortVec(std::vector<std::pair<int, int> > vec);
+      bool comparePairs(const std::pair<int, int>& a, const std::pair<int, int>& b);
+      void binaryInsertionSortVec(std::vector<std::pair<int, int> >& vec, int index);
+
+      // print pairs
+      void printPairs(std::vector<std::pair<int, int> > pairs);
 };

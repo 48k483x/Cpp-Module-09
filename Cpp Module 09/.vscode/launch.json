@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/mac/Desktop/09/Cpp Module 09",
-      "program": "/Users/mac/Desktop/09/Cpp Module 09/build/Debug/outDebug"
+      "cwd": ".",
+      "program": "build/Debug/outDebug"
     }
   ]
 }
