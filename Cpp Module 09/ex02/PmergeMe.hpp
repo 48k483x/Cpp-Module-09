@@ -4,7 +4,7 @@
 # include <sstream>
 # include <string>
 # include <vector>
-# include <list>
+# include <deque>
 
 /*
 *  1. Group elements into pairs
@@ -26,7 +26,7 @@
 class PmergeMe {
   private:
     std::vector<int> _vec;
-    std::list<int> _list;
+    std::deque<int> _list;
   public:
     /* Constructors */
     PmergeMe();
@@ -39,16 +39,23 @@ class PmergeMe {
 
     /* Public Methods */
     void mergeInsertSortVec(std::vector<int> & vec);
-    void mergeInsertSortList(std::list<int> & list);
+    void mergeInsertSortDeq(std::deque<int> & list);
 
     protected:
       bool OnlyDigits(std::string const & str);
       int jacobsthal(int n);
-      size_t getPairIndexVec(std::vector<std::pair<int, int> > vec, size_t index);
+
       std::vector<std::pair<int, int> > getPairsVec(std::vector<int>& vec);
+      std::deque<std::pair<int, int> > getPairsDeq(std::deque<int>& list);
+
       std::vector<std::pair<int, int> > mergeSortVec(std::vector<std::pair<int, int> > vec);
+      std::deque<std::pair<int, int> > mergeSortDeq(std::deque<std::pair<int, int> > list);
+
       bool comparePairs(const std::pair<int, int>& a, const std::pair<int, int>& b);
+
       void binaryInsertionSortVec(std::vector<std::pair<int, int> >& vec, int index);
+      void binaryInsertionSortDeq(std::deque<std::pair<int, int> >& list, int index);
+
 
       // print pairs
       void printPairs(std::vector<std::pair<int, int> > pairs);
