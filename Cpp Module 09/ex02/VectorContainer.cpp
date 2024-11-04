@@ -62,10 +62,10 @@ void PmergeMe::binaryInsertionSortVec(std::vector<std::pair<int, int> >& vec, in
 
   int start = 0;
   while (start < index) {
-    int mid = start + (index - start) / 2;
-    if (vec[mid].first < valueToInsert) {
+    int mid = start + (index - start) / 2;  // Calculate middle point
+    if (vec[mid].first < valueToInsert) { // If middle value is smaller, search in right half
       start = mid+1;
-    } else {
+    } else { // If middle value is greater or equal, search in left half
       index = mid;
     }
   }
