@@ -51,7 +51,7 @@ void RPN::process(std::string expression) {
 /* isNum, Check if the token is a number */
 bool RPN::isNum(std::string token) {
   if (token.find_first_not_of("0123456789") == std::string::npos)
-    if (std::stoi(token) <= 9 || std::stoi(token) >= 0) return true;
+    if (std::stoi(token) <= 9 && std::stoi(token) >= 0) return true;
   return false;
 }
 
