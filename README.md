@@ -1,5 +1,3 @@
-# 🗂 Project Structure
-
 ```
 cpp09/
 ├── ex00/
@@ -19,10 +17,3 @@ cpp09/
     └── PmergeMe.cpp
 
 ```
-
-# 🎯 Module Overview
-🔑 Key Concepts
-
-* STL containers (e.g., vector, list, map)
-* STL algorithms
-* STL
